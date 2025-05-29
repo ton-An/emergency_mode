@@ -1,23 +1,16 @@
-import 'dart:async';
+part of 'siren_page.dart';
 
-import 'package:flutter/material.dart';
-import 'package:webfabrik_theme/webfabrik_theme.dart';
-
-class CountdownTimer extends StatefulWidget {
-  const CountdownTimer({
-    super.key,
-    required this.duration,
-    required this.onComplete,
-  });
+class _CountdownTimer extends StatefulWidget {
+  const _CountdownTimer({required this.duration, required this.onComplete});
 
   final Duration duration;
   final VoidCallback onComplete;
 
   @override
-  State<CountdownTimer> createState() => _CountdownTimerState();
+  State<_CountdownTimer> createState() => _CountdownTimerState();
 }
 
-class _CountdownTimerState extends State<CountdownTimer> {
+class _CountdownTimerState extends State<_CountdownTimer> {
   late int _remaining;
   late Timer _timer;
 

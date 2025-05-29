@@ -1,4 +1,4 @@
-import 'package:emergency_mode/pages/sos_page.dart';
+import 'package:emergency_mode/pages/sos_page/sos_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 

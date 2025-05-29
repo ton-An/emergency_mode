@@ -1,7 +1,12 @@
 import 'dart:ui';
 
+import 'package:emergency_mode/widgets/draggable_selector.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:webfabrik_theme/webfabrik_theme.dart';
+
+part '_selectors.dart';
 
 class SOSPage extends StatefulWidget {
   const SOSPage({super.key});
@@ -37,6 +42,7 @@ class _SOSPageState extends State<SOSPage> {
             child: Container(color: Colors.black.withValues(alpha: .6)),
           ),
         ),
+        _Selectors(),
       ],
     );
   }

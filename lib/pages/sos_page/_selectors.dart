@@ -15,11 +15,17 @@ class _Selectors extends StatelessWidget {
           DraggableSelector(
             label: 'Siren',
             icon: CupertinoIcons.speaker_1_fill,
+            onSuccessfulDrag: () {
+              context.go(SirenPage.route);
+            },
           ),
           XXMediumGap(),
           DraggableSelector(
             label: 'Medical ID',
             icon: CupertinoIcons.staroflife_fill,
+            onSuccessfulDrag: () {
+              context.go(MedicalIdPage.route);
+            },
           ),
           XXMediumGap(),
           DraggableSelector(
@@ -27,6 +33,9 @@ class _Selectors extends StatelessWidget {
             icon: CupertinoIcons.phone_fill,
             iconColor: theme.colors.background,
             handleColor: theme.colors.error,
+            onSuccessfulDrag: () {
+              context.go(EmergencyContactModePage.route);
+            },
           ),
           MediumGap(),
           Text(

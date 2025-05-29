@@ -1,10 +1,9 @@
 part of 'siren_page.dart';
 
 class _CountdownTimer extends StatefulWidget {
-  const _CountdownTimer({required this.duration, required this.onComplete});
+  const _CountdownTimer({required this.duration});
 
   final Duration duration;
-  final VoidCallback onComplete;
 
   @override
   State<_CountdownTimer> createState() => _CountdownTimerState();
@@ -26,7 +25,7 @@ class _CountdownTimerState extends State<_CountdownTimer> {
       if (_remaining > 0) {
         setState(() => _remaining--);
       } else {
-        widget.onComplete();
+        context.read<SirenCubit>().startSiren();
         timer.cancel();
       }
     });

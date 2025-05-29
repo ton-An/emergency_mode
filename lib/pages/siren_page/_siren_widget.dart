@@ -37,13 +37,24 @@ class _SirenWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(240),
                 border: Border.all(width: 20, color: theme.colors.fieldColor),
-                color: theme.colors.background,
+                color: sirenState is SirenPlaying
+                    ? theme.colors.error
+                    : theme.colors.background,
               ),
             ),
-            Icon(
-              CupertinoIcons.speaker_1_fill,
-              size: 80,
-              color: theme.colors.error,
+            AnimatedSwitcher(
+              duration: theme.durations.medium,
+              child: sirenState is SirenPlaying
+                  ? Icon(
+                      CupertinoIcons.speaker_1_fill,
+                      size: 80,
+                      color: theme.colors.background,
+                    )
+                  : Icon(
+                      CupertinoIcons.speaker_slash_fill,
+                      size: 80,
+                      color: theme.colors.error,
+                    ),
             ),
           ],
         );

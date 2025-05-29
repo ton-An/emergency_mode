@@ -1,8 +1,10 @@
+import 'package:emergency_mode/cubits/siren_cubit.dart';
 import 'package:emergency_mode/pages/emergency_contact_mode_page.dart';
 import 'package:emergency_mode/pages/medical_id_page.dart';
 import 'package:emergency_mode/pages/siren_page/siren_page.dart';
 import 'package:emergency_mode/pages/sos_page/sos_page.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
 
@@ -42,7 +44,10 @@ class MainApp extends StatelessWidget {
       ),
       GoRoute(
         path: SirenPage.route,
-        builder: (context, state) => const SirenPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SirenCubit(),
+          child: const SirenPage(),
+        ),
       ),
     ],
   );

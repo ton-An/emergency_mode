@@ -24,7 +24,7 @@ class DraggableSelector extends StatelessWidget {
       borderRadius: BorderRadius.circular(72),
       child: Container(
         height: 74,
-        color: Color.fromARGB(71, 185, 185, 185),
+        color: theme.colors.translucentBackgroundContrast,
         child: Stack(
           children: [
             Align(
@@ -50,9 +50,9 @@ class DraggableSelector extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(child: SizedBox.expand()),
+                Expanded(flex: 9, child: SizedBox.expand()),
                 Expanded(
-                  flex: 4,
+                  flex: 40,
                   child: Center(
                     child: Text(
                       label,
@@ -61,9 +61,9 @@ class DraggableSelector extends StatelessWidget {
                         fontSize: 21,
                         fontWeight: FontWeight.w500,
                         height: 25 / 21,
-                        letterSpacing: -1.7,
+                        letterSpacing: -1.3,
                         wordSpacing: 2,
-                        color: CupertinoColors.white,
+                        color: theme.colors.background,
                       ),
                     ),
                   ),

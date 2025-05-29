@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:emergency_mode/widgets/draggable_selector.dart';
+import 'package:emergency_mode/widgets/large_icon_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,6 +34,7 @@ class _SOSPageState extends State<SOSPage> {
 
   @override
   Widget build(BuildContext context) {
+    final WebfabrikThemeData theme = WebfabrikTheme.of(context);
     return Stack(
       children: [
         Positioned.fill(child: Image.asset('assets/images/wallpaper.png')),
@@ -42,7 +44,20 @@ class _SOSPageState extends State<SOSPage> {
             child: Container(color: Colors.black.withValues(alpha: .6)),
           ),
         ),
-        _Selectors(),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'SOS',
+              style: theme.text.largeTitle.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            _Selectors(),
+            LargeIconButton(),
+          ],
+        ),
       ],
     );
   }

@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:emergency_mode/pages/sos_page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,11 +11,21 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return CupertinoApp.router(
+      routerConfig: GoRouter(
+        initialLocation: SOSPage.route,
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => SizedBox.shrink(),
+            routes: [
+              GoRoute(
+                path: SOSPage.pageName,
+                builder: (context, state) => const SOSPage(),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

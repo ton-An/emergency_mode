@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:emergency_mode/pages/emergency_contact_mode_page.dart';
@@ -59,7 +60,12 @@ class _SOSPageState extends State<SOSPage> {
               ),
             ),
             _Selectors(),
-            LargeIconButton(),
+            LargeIconButton(
+              icon: Icons.clear_rounded,
+              onPressed: () {
+                exit(0);
+              },
+            ),
           ],
         ),
       ],

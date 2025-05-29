@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:emergency_mode/pages/emergency_contact_mode_page.dart';
 import 'package:emergency_mode/pages/medical_id_page.dart';
-import 'package:emergency_mode/pages/siren_page.dart';
+import 'package:emergency_mode/pages/siren_page/siren_page.dart';
 import 'package:emergency_mode/widgets/draggable_selector.dart';
 import 'package:emergency_mode/widgets/large_icon_button.dart';
 import 'package:flutter/cupertino.dart';

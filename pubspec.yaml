@@ -12,6 +12,7 @@ dependencies:
   webfabrik_theme:
     git: https://github.com/ton-An/webfabrik_theme
   go_router: ^15.1.1  
+  smooth_corner: ^1.1.1
 
 dev_dependencies:
   flutter_test:

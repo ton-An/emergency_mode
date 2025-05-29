@@ -1,3 +1,4 @@
+import 'package:emergency_mode/widgets/fade_tap_detector.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
@@ -29,7 +30,7 @@ class CustomIconButton extends StatelessWidget {
     final double iconSize = _getIconSize();
     final double backgroundSize = _getBackgroundSize();
 
-    return GestureDetector(
+    return FadeTapDetector(
       onTap: onPressed,
       child: Column(
         children: [
@@ -69,7 +70,7 @@ class CustomIconButton extends StatelessWidget {
   double _getIconSize() {
     switch (size) {
       case CustomIconButtonSize.medium:
-        return 28;
+        return 34;
       case CustomIconButtonSize.large:
         return 44;
     }

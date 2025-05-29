@@ -26,26 +26,20 @@ class MainApp extends StatelessWidget {
           initialLocation: SOSPage.route,
           routes: [
             GoRoute(
-              path: '/',
-              builder: (context, state) => SizedBox.shrink(),
-              routes: [
-                GoRoute(
-                  path: SOSPage.pageName,
-                  builder: (context, state) => const SOSPage(),
-                ),
-                GoRoute(
-                  path: MedicalIdPage.pageName,
-                  builder: (context, state) => const MedicalIdPage(),
-                ),
-                GoRoute(
-                  path: EmergencyContactModePage.pageName,
-                  builder: (context, state) => const EmergencyContactModePage(),
-                ),
-                GoRoute(
-                  path: SirenPage.pageName,
-                  builder: (context, state) => const SirenPage(),
-                ),
-              ],
+              path: SOSPage.route,
+              builder: (context, state) => const SOSPage(),
+            ),
+            GoRoute(
+              path: MedicalIdPage.pageName,
+              builder: (context, state) => const MedicalIdPage(),
+            ),
+            GoRoute(
+              path: EmergencyContactModePage.pageName,
+              builder: (context, state) => const EmergencyContactModePage(),
+            ),
+            GoRoute(
+              path: SirenPage.pageName,
+              builder: (context, state) => const SirenPage(),
             ),
           ],
         ),

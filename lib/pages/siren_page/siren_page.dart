@@ -1,4 +1,6 @@
 import 'package:emergency_mode/pages/siren_page/countdown_timer.dart';
+import 'package:emergency_mode/widgets/large_icon_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
 
@@ -14,13 +16,21 @@ class SirenPage extends StatelessWidget {
 
     return Container(
       alignment: Alignment.center,
-
       color: Colors.white,
-      child: Center(
-        child: CountdownTimer(
-          duration: const Duration(seconds: 30),
-          onComplete: () {},
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CountdownTimer(
+            duration: const Duration(seconds: 30),
+            onComplete: () {},
+          ),
+          LargeGap(),
+          LargeIconButton(
+            icon: CupertinoIcons.stop_fill,
+            backgroundColor: theme.colors.error,
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }

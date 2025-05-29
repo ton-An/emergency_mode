@@ -7,10 +7,16 @@ class LargeIconButton extends StatelessWidget {
     super.key,
     required this.icon,
     required this.onPressed,
+    this.backgroundColor,
+    this.iconColor,
+    this.label,
   });
 
   final IconData icon;
   final VoidCallback onPressed;
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +30,29 @@ class LargeIconButton extends StatelessWidget {
             child: Container(
               width: 78,
               height: 78,
-              color: theme.colors.translucentBackgroundContrast.withValues(
-                alpha: .4,
-              ),
+              color:
+                  backgroundColor ??
+                  theme.colors.translucentBackgroundContrast.withValues(
+                    alpha: .4,
+                  ),
               child: Center(
-                child: Icon(icon, size: 44, color: theme.colors.background),
+                child: Icon(
+                  icon,
+                  size: 44,
+                  color: iconColor ?? theme.colors.background,
+                ),
               ),
             ),
           ),
-          SmallGap(),
-          Text(
-            'Cancel',
-            style: theme.text.subhead.copyWith(color: theme.colors.background),
-          ),
+          if (label != null) ...[
+            SmallGap(),
+            Text(
+              label!,
+              style: theme.text.subhead.copyWith(
+                color: theme.colors.background,
+              ),
+            ),
+          ],
         ],
       ),
     );

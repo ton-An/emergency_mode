@@ -62,6 +62,7 @@ class _SOSPageState extends State<SOSPage> {
             _Selectors(),
             LargeIconButton(
               icon: Icons.clear_rounded,
+              label: 'Cancel',
               onPressed: () {
                 exit(0);
               },

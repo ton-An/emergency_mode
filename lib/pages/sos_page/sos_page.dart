@@ -5,7 +5,7 @@ import 'package:emergency_mode/pages/emergency_contact_mode_page.dart';
 import 'package:emergency_mode/pages/medical_id_page.dart';
 import 'package:emergency_mode/pages/siren_page/siren_page.dart';
 import 'package:emergency_mode/widgets/draggable_selector.dart';
-import 'package:emergency_mode/widgets/large_icon_button.dart';
+import 'package:emergency_mode/widgets/custom_icon_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,7 +60,7 @@ class _SOSPageState extends State<SOSPage> {
               ),
             ),
             _Selectors(),
-            LargeIconButton(
+            CustomIconButton(
               icon: Icons.clear_rounded,
               label: 'Cancel',
               onPressed: () {

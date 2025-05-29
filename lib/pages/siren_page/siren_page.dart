@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:emergency_mode/widgets/large_icon_button.dart';
+import 'package:emergency_mode/widgets/custom_icon_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
@@ -22,19 +22,49 @@ class SirenPage extends StatelessWidget {
       alignment: Alignment.center,
       color: Colors.white,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _CountdownTimer(
-            duration: const Duration(seconds: 30),
-            onComplete: () {},
+          Padding(
+            padding: EdgeInsets.only(top: theme.spacing.large),
+            child: Text(
+              'Siren',
+              style: theme.text.largeTitle.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
-          LargeGap(),
-          LargeIconButton(
-            icon: CupertinoIcons.stop_fill,
-            backgroundColor: theme.colors.error,
-            onPressed: () {},
+
+          Column(
+            children: [
+              _CountdownTimer(
+                duration: const Duration(seconds: 5),
+                onComplete: () {},
+              ),
+              LargeGap(),
+              CustomIconButton(
+                icon: CupertinoIcons.stop_fill,
+                size: CustomIconButtonSize.medium,
+                backgroundColor: theme.colors.error,
+                onPressed: () {},
+              ),
+              XSmallGap(),
+              RichText(
+                text: TextSpan(
+                  text: 'Press to ',
+                  style: theme.text.subhead,
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'stop',
+                      style: theme.text.subhead.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextSpan(text: ' Siren!'),
+                  ],
+                ),
+              ),
+            ],
           ),
-          LargeGap(),
 
           Padding(
             padding: EdgeInsetsGeometry.symmetric(
@@ -42,7 +72,21 @@ class SirenPage extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [],
+              children: [
+                _MessageSendButton(
+                  initialLabel: 'Send Message  112',
+                  successLabel: '112 Conversation',
+                ),
+                MediumGap(),
+                _MessageSendButton(
+                  initialLabel: 'Notify Emergency Contact',
+                  successLabel: 'Emergency Contact Conversation',
+                  initialBackgroundColor: theme.colors.fieldColor,
+                  initialTextColor: theme.colors.primary,
+                  successBackgroundColor: theme.colors.fieldColor,
+                  successTextColor: theme.colors.success,
+                ),
+              ],
             ),
           ),
         ],

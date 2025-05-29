@@ -13,12 +13,9 @@ class _Selectors extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DraggableSelector(
-            label: 'Emergency 112',
-            icon: CupertinoIcons.phone_fill,
-            iconColor: theme.colors.background,
-            handleColor: theme.colors.error,
+            label: 'Siren',
+            icon: CupertinoIcons.speaker_1_fill,
           ),
-
           XXMediumGap(),
           DraggableSelector(
             label: 'Medical ID',
@@ -26,8 +23,15 @@ class _Selectors extends StatelessWidget {
           ),
           XXMediumGap(),
           DraggableSelector(
-            label: 'Siren',
-            icon: CupertinoIcons.speaker_1_fill,
+            label: 'Emergency 112',
+            icon: CupertinoIcons.phone_fill,
+            iconColor: theme.colors.background,
+            handleColor: theme.colors.error,
+          ),
+          MediumGap(),
+          Text(
+            'Slide to contact Emergency Services',
+            style: theme.text.subhead.copyWith(color: theme.colors.background),
           ),
         ],
       ),

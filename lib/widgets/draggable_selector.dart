@@ -28,6 +28,7 @@ class _DraggableSelectorState extends State<DraggableSelector>
   late Animation<double> _pullBackAnimation;
   late Duration _maxPullBackDuration;
 
+  bool _hasInitializedControllers = false;
   bool _isVisible = true;
 
   double _dragPosition = 0;
@@ -42,19 +43,27 @@ class _DraggableSelectorState extends State<DraggableSelector>
 
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
+    if (!_hasInitializedControllers) {
+      _pullBackController = AnimationController(
+        duration: theme.durations.medium,
+        vsync: this,
+      );
+
+      _pullBackController.addListener(() {
+        setState(() {});
+      });
+
+      _hasInitializedControllers = true;
+    }
+
+    _pullBackController.duration = theme.durations.medium;
+
     _maxPullBackDuration = theme.durations.medium;
-    _pullBackController = AnimationController(
-      duration: const Duration(milliseconds: 300),
-      vsync: this,
-    );
+
     _pullBackAnimation = Tween<double>(
       begin: -1,
       end: 0,
     ).animate(_pullBackController);
-
-    _pullBackController.addListener(() {
-      setState(() {});
-    });
   }
 
   @override
@@ -112,8 +121,13 @@ class _DraggableSelectorState extends State<DraggableSelector>
                     setState(() {
                       _isVisible = false;
                     });
-                    await Future.delayed(Duration(milliseconds: 350));
+                    await Future.delayed(theme.durations.short);
                     widget.onSuccessfulDrag();
+                    await Future.delayed(theme.durations.medium);
+                    _dragPosition = 0;
+                    setState(() {
+                      _isVisible = true;
+                    });
                   } else {
                     _pullBackAnimation = Tween<double>(
                       begin: _dragPosition,

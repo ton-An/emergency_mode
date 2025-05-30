@@ -1,7 +1,7 @@
 part of 'sos_page.dart';
 
 class _Selectors extends StatelessWidget {
-  const _Selectors();
+  const _Selectors({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _Selectors extends StatelessWidget {
             iconColor: theme.colors.background,
             handleColor: theme.colors.error,
             onSuccessfulDrag: () {
-              context.go(EmergencyContactModePage.route);
+              context.read<SOSCubit>().toContactModeSelection();
             },
           ),
           MediumGap(),

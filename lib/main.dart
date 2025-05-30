@@ -1,4 +1,5 @@
-import 'package:emergency_mode/cubits/siren_cubit.dart';
+import 'package:emergency_mode/cubits/siren_cubit/siren_cubit.dart';
+import 'package:emergency_mode/cubits/sos_cubit/sos_cubit.dart';
 import 'package:emergency_mode/pages/emergency_contact_mode_page.dart';
 import 'package:emergency_mode/pages/medical_id_page.dart';
 import 'package:emergency_mode/pages/siren_page/siren_page.dart';
@@ -32,7 +33,10 @@ class MainApp extends StatelessWidget {
     routes: [
       GoRoute(
         path: SOSPage.route,
-        builder: (context, state) => const SOSPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SOSCubit(),
+          child: const SOSPage(),
+        ),
       ),
       GoRoute(
         path: MedicalIdPage.route,

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:emergency_mode/cubits/siren_cubit.dart';
-import 'package:emergency_mode/cubits/siren_states.dart';
+import 'package:emergency_mode/cubits/siren_cubit/siren_cubit.dart';
+import 'package:emergency_mode/cubits/siren_cubit/siren_states.dart';
 import 'package:emergency_mode/widgets/custom_icon_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

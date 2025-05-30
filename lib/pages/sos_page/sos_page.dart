@@ -53,7 +53,7 @@ class _SOSPageState extends State<SOSPage> with TickerProviderStateMixin {
 
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
-    final Duration transitionDuration = theme.durations.xShort;
+    final Duration transitionDuration = theme.durations.short;
 
     if (!_hasInitializedControllers) {
       _transitionController = AnimationController(
@@ -91,7 +91,13 @@ class _SOSPageState extends State<SOSPage> with TickerProviderStateMixin {
       end: 1,
     ).animate(_transitionController);
 
-    _blurTransition = Tween<double>(begin: 0, end: 2).animate(_blurController);
+    _blurTransition = Tween<double>(begin: 0, end: 3).animate(
+      CurvedAnimation(
+        parent: _blurController,
+        curve: Curves.easeOut,
+        reverseCurve: Curves.easeIn,
+      ),
+    );
   }
 
   @override

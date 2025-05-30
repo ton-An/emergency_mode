@@ -1,7 +1,7 @@
 part of 'sos_page.dart';
 
 class _Selectors extends StatelessWidget {
-  const _Selectors({super.key});
+  const _Selectors();
 
   @override
   Widget build(BuildContext context) {

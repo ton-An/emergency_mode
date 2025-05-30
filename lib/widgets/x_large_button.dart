@@ -32,7 +32,7 @@ class XLargeButton extends StatelessWidget {
                   padding: EdgeInsets.all(theme.spacing.xxSmall),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: theme.colors.error.withValues(alpha: .8),
+                    color: theme.colors.translucentBackgroundContrast,
                   ),
                   child: Icon(icon, size: 48, color: theme.colors.background),
                 ),

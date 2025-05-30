@@ -7,6 +7,7 @@ import 'package:emergency_mode/pages/sos_page/sos_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sprung/sprung.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
 
 void main() {
@@ -48,9 +49,22 @@ class MainApp extends StatelessWidget {
       ),
       GoRoute(
         path: SirenPage.route,
-        builder: (context, state) => BlocProvider(
-          create: (context) => SirenCubit(),
-          child: const SirenPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          transitionDuration: WebfabrikTheme.of(context).durations.long,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              SlideTransition(
+                position: animation.drive(
+                  Tween<Offset>(
+                    begin: Offset(0, 1),
+                    end: Offset.zero,
+                  ).chain(CurveTween(curve: Sprung(36))),
+                ),
+                child: child,
+              ),
+          child: BlocProvider(
+            create: (context) => SirenCubit(),
+            child: const SirenPage(),
+          ),
         ),
       ),
     ],

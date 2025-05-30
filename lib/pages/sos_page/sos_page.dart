@@ -86,10 +86,13 @@ class _SOSPageState extends State<SOSPage> with TickerProviderStateMixin {
     _transitionController.duration = transitionDuration;
     _blurController.duration = transitionDuration * .5;
 
-    _transition = Tween<double>(
-      begin: 0,
-      end: 1,
-    ).animate(_transitionController);
+    _transition = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _transitionController,
+        curve: Curves.easeOut,
+        reverseCurve: Curves.easeIn,
+      ),
+    );
 
     _blurTransition = Tween<double>(begin: 0, end: 3).animate(
       CurvedAnimation(

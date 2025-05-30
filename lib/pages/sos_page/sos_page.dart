@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:emergency_mode/cubits/sos_cubit/sos_cubit.dart';
 import 'package:emergency_mode/cubits/sos_cubit/sos_states.dart';
 import 'package:emergency_mode/pages/medical_id_page.dart';
+import 'package:emergency_mode/pages/messaging_page/messaging_page.dart';
 import 'package:emergency_mode/pages/siren_page/siren_page.dart';
 import 'package:emergency_mode/widgets/custom_icon_button.dart';
 import 'package:emergency_mode/widgets/draggable_selector.dart';

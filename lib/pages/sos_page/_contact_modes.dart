@@ -22,7 +22,7 @@ class _ContactModes extends StatelessWidget {
             icon: CupertinoIcons.chat_bubble_fill,
             label: 'Message 112',
             onPressed: () {
-              // Logic to send emergency message
+              context.go(MessagingPage.route);
             },
           ),
         ],

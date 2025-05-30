@@ -17,6 +17,7 @@ dependencies:
   pulsator: ^1.0.0+2
   flutter_bloc: ^9.1.1
   equatable: ^2.0.7
+  sprung: ^3.0.1
 
 dev_dependencies:
   flutter_test:

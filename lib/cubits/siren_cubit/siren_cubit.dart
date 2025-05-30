@@ -1,4 +1,4 @@
-import 'package:emergency_mode/cubits/siren_states.dart';
+import 'package:emergency_mode/cubits/siren_cubit/siren_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SirenCubit extends Cubit<SirenState> {

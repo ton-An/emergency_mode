@@ -165,7 +165,7 @@ class _SOSPageState extends State<SOSPage> with TickerProviderStateMixin {
 
                 CustomIconButton(
                   icon: Icons.clear_rounded,
-                  label: 'Cancel',
+                  label: sosState is SOSInitial ? 'Cancel' : 'Back',
                   onPressed: () {
                     if (sosState is SOSInitial) {
                       exit(0);

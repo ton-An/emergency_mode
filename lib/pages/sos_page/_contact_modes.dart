@@ -14,7 +14,8 @@ class _ContactModes extends StatelessWidget {
             icon: CupertinoIcons.phone_fill,
             label: 'Call 112',
             onPressed: () {
-              // Logic to call emergency services
+              context.go(CallPage.route);
+              print("object");
             },
           ),
           XXMediumGap(),

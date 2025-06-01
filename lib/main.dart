@@ -1,5 +1,6 @@
 import 'package:emergency_mode/cubits/siren_cubit/siren_cubit.dart';
 import 'package:emergency_mode/cubits/sos_cubit/sos_cubit.dart';
+import 'package:emergency_mode/pages/call_page/call_page.dart';
 import 'package:emergency_mode/pages/emergency_contact_mode_page.dart';
 import 'package:emergency_mode/pages/medical_id_page.dart';
 import 'package:emergency_mode/pages/messaging_page/messaging_page.dart';
@@ -62,6 +63,11 @@ class MainApp extends StatelessWidget {
         path: MessagingPage.route,
         pageBuilder: (context, state) =>
             OpenUpwardsPage(context: context, child: const MessagingPage()),
+      ),
+      GoRoute(
+        path: CallPage.route,
+        pageBuilder: (context, state) =>
+            OpenUpwardsPage(context: context, child: const CallPage()),
       ),
     ],
   );

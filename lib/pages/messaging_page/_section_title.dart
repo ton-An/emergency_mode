@@ -5,6 +5,15 @@ class _SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final WebfabrikThemeData theme = WebfabrikTheme.of(context);
+
+    return Text(
+      'SMS\nToday ${DateFormat.Hm().format(DateTime.now())}',
+      style: theme.text.caption2.copyWith(
+        fontWeight: FontWeight.w500,
+        color: theme.colors.hint,
+      ),
+      textAlign: TextAlign.center,
+    );
   }
 }

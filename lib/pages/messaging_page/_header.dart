@@ -7,32 +7,44 @@ class _Header extends StatelessWidget {
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
     final double topSafeArea = MediaQuery.of(context).padding.top;
-    return Container(
-      padding: EdgeInsets.only(top: topSafeArea + 4),
-      height: 142,
-      width: double.infinity,
-      color: theme.colors.backgroundContrast.withValues(alpha: .045),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SmoothClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: Image.asset('assets/images/app_icon.png'),
-            ),
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
+        child: Container(
+          padding: EdgeInsets.only(top: topSafeArea + 4),
+          height: 120,
+          width: double.infinity,
+          color: theme.colors.translucentBackground.withValues(alpha: .75),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Text 112',
+                  textAlign: TextAlign.center,
+                  style: theme.text.title3.copyWith(
+                    // fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: theme.colors.text,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsetsGeometry.only(
+                    right: theme.spacing.medium + theme.spacing.small,
+                  ),
+                  child: Icon(
+                    CupertinoIcons.phone,
+                    size: 24,
+                    color: theme.colors.backgroundContrast,
+                  ),
+                ),
+              ),
+            ],
           ),
-          SmallGap(),
-          Text(
-            '+1 (888) 555-1212',
-            textAlign: TextAlign.center,
-            style: theme.text.caption2.copyWith(
-              fontSize: 11,
-              color: theme.colors.text,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -9,8 +9,9 @@ class _SingleMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     final WebfabrikThemeData theme = WebfabrikTheme.of(context);
 
-    return Align(
+    return Container(
       alignment: isSender ? Alignment.topRight : Alignment.topLeft,
+      margin: EdgeInsets.only(bottom: theme.spacing.small),
       child: Column(
         children: [
           SmoothClipRRect(

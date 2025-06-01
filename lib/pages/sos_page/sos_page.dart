@@ -3,9 +3,11 @@ import 'dart:ui';
 
 import 'package:emergency_mode/cubits/sos_cubit/sos_cubit.dart';
 import 'package:emergency_mode/cubits/sos_cubit/sos_states.dart';
+import 'package:emergency_mode/pages/call_page/call_page.dart';
 import 'package:emergency_mode/pages/medical_id_page.dart';
 import 'package:emergency_mode/pages/messaging_page/messaging_page.dart';
 import 'package:emergency_mode/pages/siren_page/siren_page.dart';
+import 'package:emergency_mode/widgets/blurred_wallpaper.dart';
 import 'package:emergency_mode/widgets/custom_icon_button.dart';
 import 'package:emergency_mode/widgets/draggable_selector.dart';
 import 'package:emergency_mode/widgets/x_large_button.dart';
@@ -119,68 +121,59 @@ class _SOSPageState extends State<SOSPage> with TickerProviderStateMixin {
         }
       },
       builder: (BuildContext context, SOSState sosState) {
-        return Stack(
-          children: [
-            Positioned.fill(child: Image.asset('assets/images/wallpaper.png')),
-            Positioned.fill(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 200, sigmaY: 200),
-                child: Container(color: Colors.black.withValues(alpha: .6)),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: EdgeInsetsGeometry.only(top: theme.spacing.large),
-                  child: Text(
-                    'SOS',
-                    style: theme.text.largeTitle.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
+        return BlurredWallpaper(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding: EdgeInsetsGeometry.only(top: theme.spacing.large),
+                child: Text(
+                  'SOS',
+                  style: theme.text.largeTitle.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
+              ),
 
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    _ContentTransition(
-                      value: 1 - _transition.value,
-                      child: _Selectors(),
-                    ),
-                    _ContentTransition(
-                      value: _transition.value,
-                      child: _ContactModes(),
-                    ),
-                    Positioned.fill(
-                      child: ClipRect(
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(
-                            sigmaX: _blurTransition.value,
-                            sigmaY: _blurTransition.value,
-                          ),
-                          child: Container(),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  _ContentTransition(
+                    value: 1 - _transition.value,
+                    child: _Selectors(),
+                  ),
+                  _ContentTransition(
+                    value: _transition.value,
+                    child: _ContactModes(),
+                  ),
+                  Positioned.fill(
+                    child: ClipRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: _blurTransition.value,
+                          sigmaY: _blurTransition.value,
                         ),
+                        child: Container(),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
 
-                CustomIconButton(
-                  icon: Icons.clear_rounded,
-                  label: sosState is SOSInitial ? 'Cancel' : 'Back',
-                  onPressed: () {
-                    if (sosState is SOSInitial) {
-                      exit(0);
-                    } else if (sosState is SOSContactModeSelection) {
-                      context.read<SOSCubit>().toInitial();
-                    }
-                  },
-                ),
-              ],
-            ),
-          ],
+              CustomIconButton(
+                icon: Icons.clear_rounded,
+                label: sosState is SOSInitial ? 'Cancel' : 'Back',
+                onPressed: () {
+                  if (sosState is SOSInitial) {
+                    exit(0);
+                  } else if (sosState is SOSContactModeSelection) {
+                    context.read<SOSCubit>().toInitial();
+                  }
+                },
+              ),
+            ],
+          ),
         );
       },
     );

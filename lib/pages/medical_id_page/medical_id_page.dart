@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:smooth_corner/smooth_corner.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
 
+part '_divider.dart';
+part '_emergency_contacts.dart';
 part '_header.dart';
 part '_quick_info.dart';
+part '_single_emergency_contact.dart';
+part '_small_section.dart';
 
 class MedicalIdPage extends StatelessWidget {
   const MedicalIdPage({super.key});
@@ -43,7 +47,27 @@ class MedicalIdPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: theme.spacing.xMedium + theme.spacing.small,
                 ),
-                child: _QuickInfo(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _QuickInfo(),
+                    MediumGap(),
+                    _Divider(),
+                    MediumGap(),
+                    _SmallSection(
+                      title: 'Medications',
+                      content: 'Aspirin 500mg',
+                    ),
+                    XSmallGap(),
+                    _Divider(),
+                    XSmallGap(),
+                    _SmallSection(title: 'Allergies', content: 'Kiwi, Bees'),
+                    XSmallGap(),
+                    _Divider(),
+                    XSmallGap(),
+                    _EmergencyContacts(),
+                  ],
+                ),
               ),
             ],
           ),

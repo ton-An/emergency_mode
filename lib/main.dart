@@ -10,14 +10,31 @@ import 'package:emergency_mode/widgets/open_upwards_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:webfabrik_theme/webfabrik_theme.dart';
 
 void main() {
   runApp(MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _requestPermissions();
+  }
+
+  void _requestPermissions() async {
+    await Permission.camera.request();
+  }
 
   @override
   Widget build(BuildContext context) {

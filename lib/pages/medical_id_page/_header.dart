@@ -15,16 +15,19 @@ class _Header extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.centerRight,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: theme.spacing.medium,
-                vertical: theme.spacing.small,
-              ),
-              child: Text(
-                'Done',
-                style: theme.text.body.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: theme.colors.primary,
+            child: FadeTapDetector(
+              onTap: () => exit(0),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: theme.spacing.medium,
+                  vertical: theme.spacing.small,
+                ),
+                child: Text(
+                  'Done',
+                  style: theme.text.body.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: theme.colors.primary,
+                  ),
                 ),
               ),
             ),

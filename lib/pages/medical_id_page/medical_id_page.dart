@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:emergency_mode/widgets/fade_tap_detector.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_corner/smooth_corner.dart';

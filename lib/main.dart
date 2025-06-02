@@ -1,3 +1,4 @@
+import 'package:emergency_mode/cubits/call_cubit/call_cubit.dart';
 import 'package:emergency_mode/cubits/siren_cubit/siren_cubit.dart';
 import 'package:emergency_mode/cubits/sos_cubit/sos_cubit.dart';
 import 'package:emergency_mode/pages/call_page/call_page.dart';
@@ -27,13 +28,13 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _requestPermissions();
   }
 
   void _requestPermissions() async {
     await Permission.camera.request();
+    await Permission.microphone.request();
   }
 
   @override
@@ -86,7 +87,10 @@ class _MainAppState extends State<MainApp> {
         pageBuilder: (context, state) => CustomTransitionPage(
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               FadeTransition(opacity: animation, child: child),
-          child: const CallPage(),
+          child: BlocProvider(
+            create: (context) => CallCubit(),
+            child: const CallPage(),
+          ),
         ),
       ),
     ],

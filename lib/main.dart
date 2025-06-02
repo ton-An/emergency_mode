@@ -61,7 +61,8 @@ class _MainAppState extends State<MainApp> {
       ),
       GoRoute(
         path: MedicalIdPage.route,
-        builder: (context, state) => const MedicalIdPage(),
+        pageBuilder: (context, state) =>
+            OpenUpwardsPage(context: context, child: const MedicalIdPage()),
       ),
       GoRoute(
         path: EmergencyContactModePage.route,

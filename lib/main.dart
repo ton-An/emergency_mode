@@ -66,8 +66,11 @@ class MainApp extends StatelessWidget {
       ),
       GoRoute(
         path: CallPage.route,
-        pageBuilder: (context, state) =>
-            OpenUpwardsPage(context: context, child: const CallPage()),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              FadeTransition(opacity: animation, child: child),
+          child: const CallPage(),
+        ),
       ),
     ],
   );
